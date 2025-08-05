@@ -275,3 +275,18 @@ If you have Ollama running on another machine:
 1. **Review code** in unfamiliar languages
 2. **Learn best practices** from AI feedback
 3. **Improve coding skills** over time
+
+#### **From GitHub Release (Current Option)**
+For Users:
+Go to your GitHub: https://github.com/bchepuri/ollama-code-review-extension
+Click "Releases" on the right
+Download the .vsix file
+Install in VS Code:
+Open VS Code
+Go to Extensions (Ctrl+Shift+X)
+Click "..." menu → "Install from VSIX..."
+Select the downloaded file
+Method 3: Command Line Installation
+For Users:
+# Download the .vsix file first, then:
+code --install-extension ollama-code-review-0.0.1.vsix
