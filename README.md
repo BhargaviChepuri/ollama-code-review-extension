@@ -131,3 +131,147 @@ For issues and questions:
 - Create an issue on GitHub
 - Check the troubleshooting section above
 - Ensure Ollama is properly installed and running
+
+## How Others Can Add This Extension
+
+### Method 1: Install from GitHub Release (Easiest)
+
+1. **Go to the GitHub repository**: [https://github.com/bchepuri/ollama-code-review-extension](https://github.com/bchepuri/ollama-code-review-extension)
+2. **Click "Releases"** on the right side of the page
+3. **Download the latest .vsix file** (e.g., `ollama-code-review-0.0.1.vsix`)
+4. **Install in VS Code**:
+   - Open VS Code
+   - Go to Extensions (Ctrl+Shift+X)
+   - Click the "..." menu (three dots) → "Install from VSIX..."
+   - Select the downloaded .vsix file
+   - Click "Install"
+
+### Method 2: Clone and Run (For Developers)
+
+```bash
+# Clone the repository
+git clone https://github.com/bchepuri/ollama-code-review-extension.git
+
+# Navigate to the folder
+cd ollama-code-review-extension
+
+# Install dependencies
+npm install
+
+# Open in VS Code
+code .
+
+# Press F5 to run in development mode
+```
+
+### Method 3: Command Line Installation
+
+```bash
+# Download the .vsix file first, then:
+code --install-extension ollama-code-review-0.0.1.vsix
+```
+
+## How to Use the Extension
+
+### Getting Started
+
+1. **Install Ollama** (if not already installed):
+   ```bash
+   # Download from https://ollama.ai
+   # Or use package manager for your OS
+   ```
+
+2. **Download a code model**:
+   ```bash
+   ollama pull codellama:7b-instruct
+   ```
+
+3. **Start Ollama server**:
+   ```bash
+   ollama serve
+   ```
+
+4. **Install the extension** (using one of the methods above)
+
+5. **Open a code file** in VS Code
+
+#### **Customizing Settings**
+1. **Open VS Code Settings** (Ctrl+,)
+2. **Search for "Ollama Code Review"**
+3. **Customize**:
+   - **Model**: Change to different Ollama models
+   - **Host/Port**: Connect to remote Ollama servers
+   - **Timeout**: Adjust request timeouts
+   - **Max Code Length**: Set maximum code size for review
+
+#### **Using Different Models**
+```bash
+# Download different models
+ollama pull llama2
+ollama pull codellama:13b-instruct
+ollama pull deepseek-coder
+
+# Then change the model in VS Code settings
+```
+
+#### **Remote Ollama Server**
+If you have Ollama running on another machine:
+1. **Update settings** in VS Code
+2. **Change Host** to your server IP
+3. **Change Port** if different (default: 11434)
+
+### Best Practices
+
+#### **For Code Reviews**
+1. **Review small sections** at a time for better focus
+2. **Use workspace review** for architectural feedback
+3. **Combine with manual review** for best results
+4. **Apply suggestions** gradually and test changes
+
+#### **For Different Languages**
+- **JavaScript/TypeScript**: Focus on ES6+ features and modern patterns
+- **Python**: Emphasize PEP 8 and Pythonic code
+- **Java**: Look for OOP principles and Java conventions
+- **C++**: Check memory management and modern C++ features
+
+#### **For Teams**
+1. **Share the extension** with your team
+2. **Set up consistent Ollama models** across team
+3. **Use for code review meetings**
+4. **Integrate into development workflow**
+
+### Troubleshooting Common Issues
+
+#### **Extension Not Working**
+1. **Check if Ollama is running**: `curl http://localhost:11434/api/tags`
+2. **Verify model is downloaded**: `ollama list`
+3. **Test connection**: Use "Ollama: Test Connection" command
+4. **Check VS Code console** for error messages
+
+#### **Slow Responses**
+1. **Reduce code length** in settings
+2. **Use a smaller model** (7B instead of 13B)
+3. **Increase timeout** in settings
+4. **Close other applications** to free up resources
+
+#### **No Commands Available**
+1. **Restart VS Code** after installation
+2. **Check if extension is enabled** in Extensions panel
+3. **Try reloading window**: Ctrl+Shift+P → "Developer: Reload Window"
+
+### Integration with Development Workflow
+
+#### **Pre-commit Reviews**
+1. **Review code** before committing
+2. **Fix issues** suggested by AI
+3. **Commit improved code**
+
+#### **Code Review Meetings**
+1. **Use extension** during review sessions
+2. **Share AI feedback** with team
+3. **Discuss suggestions** together
+
+#### **Learning New Languages**
+1. **Review code** in unfamiliar languages
+2. **Learn best practices** from AI feedback
+3. **Improve coding skills** over time
