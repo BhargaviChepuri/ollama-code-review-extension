@@ -1,0 +1,130 @@
+{
+  "name": "ollama-code-review",
+  "displayName": "Ollama Code Review",
+  "description": "AI-powered code review using Ollama. Review code in multiple languages including Java, JavaScript, TypeScript, Python, C++, and more.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Code Review"
+  ],
+  "keywords": [
+    "code review",
+    "ai",
+    "ollama",
+    "java",
+    "javascript",
+    "typescript",
+    "python",
+    "c++",
+    "programming"
+  ],
+  "publisher": "your-publisher-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ollama-code-review"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "OllamaCodeReview.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "OllamaCodeReview.reviewCurrentFile",
+        "title": "Ollama: Review Current File"
+      },
+      {
+        "command": "OllamaCodeReview.reviewSelection",
+        "title": "Ollama: Review Selection"
+      },
+      {
+        "command": "OllamaCodeReview.reviewWorkspace",
+        "title": "Ollama: Review Workspace"
+      },
+      {
+        "command": "OllamaCodeReview.testOllama",
+        "title": "Ollama: Test Connection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "OllamaCodeReview.reviewSelection",
+          "group": "1_modification",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "OllamaCodeReview.reviewCurrentFile",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Ollama Code Review",
+      "properties": {
+        "ollamaCodeReview.model": {
+          "type": "string",
+          "default": "codellama:7b-instruct",
+          "description": "The Ollama model to use for code review"
+        },
+        "ollamaCodeReview.host": {
+          "type": "string",
+          "default": "localhost",
+          "description": "Ollama server host"
+        },
+        "ollamaCodeReview.port": {
+          "type": "number",
+          "default": 11434,
+          "description": "Ollama server port"
+        },
+        "ollamaCodeReview.maxCodeLength": {
+          "type": "number",
+          "default": 18000,
+          "description": "Maximum code length to send for review"
+        },
+        "ollamaCodeReview.timeout": {
+          "type": "number",
+          "default": 3000000,
+          "description": "Request timeout in milliseconds"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.8",
+    "eslint": "^9.25.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.3"
+  }
+}
